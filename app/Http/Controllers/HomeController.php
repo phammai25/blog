@@ -3,19 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use App\Post;
+
 class HomeController extends Controller
 {
-   
-    public function index()
-    {	
-    	$post = Post::all();
-        return view('home')->with('post',$post);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
-    
-    // public function getPost()
-    // {
-    //     $sql = DB::table('post')->get();
-    // }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
 }

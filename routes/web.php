@@ -17,9 +17,16 @@
 // Auth::routes();
 Route::get('/home','HomeController@index');
 Route::get('/login','LoginController@index');
+Route::get('/logged','LoggedController@index');
 Route::get('/register','RegisterController@index');
-Route::post('/register',function(){
-	echo"ghj";
+Route::post('/registed','RegisterController@register');
+Route::post('/checked','LoginController@checkLogin');
+//admin
+
+Route::prefix('admin')->group(function() {
+Route::get('/adminlogin','backend\AdminLoginController@index');
+Route::post('/adminchecked','backend\AdminLoginController@checkLogin');
+Route::get('/adminlogged','backend\AdminLoggedController@index');
 });
 
 

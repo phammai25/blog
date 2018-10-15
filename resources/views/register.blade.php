@@ -39,7 +39,7 @@
                         var sdt =document.getElementById("sdt").value;
                         var password=document.getElementById("password").value;
                         var email=document.getElementById("email").value;
-                        var linkfb =document.getElementById("linkfb").value;
+                        var diachi = document.getElementById("diachi").value;
                         var acong= email.indexOf('@');
                         var dodai=email.length-1;
                         var daucham= email.lastIndexOf('.');
@@ -52,7 +52,7 @@
                         else{
                            document.getElementById("errorusername").innerHTML="";
                         }
-                         if (sdt==""){
+                        if (sdt==""){
                             document.getElementById("errorsdt").innerHTML = "*Vui lòng nhập số điện thoại";
                             return false;
                         }
@@ -80,37 +80,34 @@
                                document.getElementById("erroremail").innerHTML="Nhập đúng";
                             } 
                         }
-                         if (linkfb==""){
-                            document.getElementById("errorlinkfb").innerHTML = "*Vui lòng nhập link facebook";
-                            return false;
-                        }
-                        else{
-                           document.getElementById("errorlinkfb").innerHTML="";
-                        }
+                         
                     }
     </script>
    
 </head>
 <body>
-    <form action="http://127.0.0.1:8000/register" username="myform" id="form1" method="POST" onsubmit="return checkEmail()" style="padding-left: 430px">
+    <form action="http://127.0.0.1:8000/registed" name="myform" id="form1" method="POST" onsubmit="return checkEmail()" style="padding-left: 430px">
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <ul>
-                <li><b>username:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="username" username="username" value="">
+                <li><b>Username:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="username" name="username" value="">
                                     <span id="errorusername" class="error"></span>
                 </li>
-                <li><b>Passwword:</b><br> <input type="password" style="font-size: 15px;width: 270px;height: 30px" id="password" username="password" value="">
+                <li><b>Passwword:</b><br> <input type="password" style="font-size: 15px;width: 270px;height: 30px" id="password" name="password" value="">
                                     <span id="errorpassword" class="error"></span>
                 </li>
-                <li><b>Số điện thoại:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="sdt" username="sdt" value="">
+                <li><b>Số điện thoại:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="sdt" name="sdt" value="">
                     <span id="errorsdt" class="error"></span>
                 </li>
-
+                <li><b>Email:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="email" name="email" value="">
+                    <span id="erroremail" class="error"></span>
+                </li>
                 
                
-                <li><b>Địa chỉ:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="diachi" username="ldiachi" value="">
+                <li><b>Địa chỉ:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="diachi" name="ldiachi" value="">
                                     <span id="diachi" class="error"></span>
                 </li>
                 </ul>
-                <p><button type="submit", style="background-color: green;color: yellow;margin-left: 116px;padding-top: 17px;width: 100px", username="register", onclick="checkEmail()"  >Submit</p>
+                <p><button type="submit", style="background-color: green;color: yellow;margin-left: 116px;padding-top: 17px;width: 100px", name="register", onclick="checkEmail()"  >Submit</p>
                 </button>
                 </p>
             </form> 

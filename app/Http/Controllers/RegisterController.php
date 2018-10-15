@@ -1,9 +1,9 @@
 <?php
-
-usernamespace App\Http\Controllers;
-
+namespace App\Http\Controllers;
+use Input,Hash,Redirect;
+use DB;
 use Illuminate\Http\Request;
-
+use App\User;
 class RegisterController extends Controller
 {
     function index(){
@@ -11,30 +11,19 @@ class RegisterController extends Controller
     }
   	function register()
   	{
-  		if (isset($_POST['register'])) {
-
-			$username = $_POST['username'];
-		    $sdt = $_POST['sdt'];
-		    $password = $_POST['password'];
-		    $sdt = $_POST['sdt'];
-		   
-		     
-		  
 			$arr = [
 			      
-		         'username'=>$username,
-		         'sdt'=> $sdt,
-		         'password'=>$password,
-		         'sdt'=>$diachi,
+		         'username'=>Input::get('username'),
+		         'password'=>Hash::make(Input::get('password')),
+		         'sdt'=> Input::get('sdt'),
+		         'email'=>Input::get('email'),
+		         'diachi'=>Input::get('diachi'),
 		         //'img'=>$img,
 		];
 		if(DB::table('user')->insert($arr)){
-			echo"ghjkl;";
+			return Redirect::to(url('/login'));
 	 	} else {
 	 		return view('register');
-		}
-		
-			
 		}
 	}
 

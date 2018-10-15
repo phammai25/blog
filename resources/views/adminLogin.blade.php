@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
- 	<form action="http://127.0.0.1:8000/checked" name="myform" id="form1" method="POST" onsubmit="return checkEmail()" style="padding-left: 430px">
+ 	<form action="http://127.0.0.1:8000/adminchecked" name="myform" id="form1" method="POST" onsubmit="return checkEmail()" style="padding-left: 430px">
  	<input type="hidden" name="_token" value="{{csrf_token()}}">
                 <ul>
                 <li><b>Email:</b><br> <input type="text" style="font-size: 15px;width: 270px;height: 30px" id="email" name="email" value="">
@@ -22,3 +22,5 @@
  
 </body>
 </html>
+
+

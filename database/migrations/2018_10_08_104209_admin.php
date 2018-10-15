@@ -18,6 +18,7 @@ class Admin extends Migration
             $table->string('username')->nullable();
             $table->string('password')->nullable();
             $table->string('sdt')->nullable();
+            $table->string('email', 320);
             $table->string('diachi')->nullable();
             
             $table->timestamps();
